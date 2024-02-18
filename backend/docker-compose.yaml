@@ -31,7 +31,6 @@ services:
       - "7000:7000"
     volumes:
       - ./auth_service:/auth_service
+
 volumes:
   mongodb_data:
-  ./user_service:
-  ./auth_service:
