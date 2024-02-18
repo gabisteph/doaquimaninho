@@ -19,10 +19,10 @@ services:
     container_name: user_service
     ports:
       - "8000:8000"
-    depends_on:
-      - mongodb
-    environment:
-      - MONGO_URI=mongodb://admin:adminpassword@mongodb:27017/user_data
+    # depends_on:
+    #   - mongodb
+    # environment:
+    #   - MONGO_URI=mongodb://admin:adminpassword@mongodb:27017/user_data
 
 volumes:
   mongodb_data:
