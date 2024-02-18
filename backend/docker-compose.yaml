@@ -15,7 +15,7 @@ services:
   user_service:
     build:
       context: .
-      dockerfile: Dockerfile_user_service
+      dockerfile: ./user_service/Dockerfile_user_service
     container_name: user_service
     ports:
       - "8000:8000"
@@ -25,7 +25,7 @@ services:
   auth_service:
     build:
       context: .
-      dockerfile: Dockerfile_auth_service
+      dockerfile: ./auth_service/Dockerfile_auth_service
     container_name: auth_service
     ports:
       - "7000:7000"
