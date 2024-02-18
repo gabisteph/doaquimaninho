@@ -13,22 +13,23 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=adminpassword
 
   user_service:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_user_service
     container_name: user_service
     ports:
       - "8000:8000"
-    # depends_on:
-    #   - mongodb
-    # environment:
-    #   - MONGO_URI=mongodb://admin:adminpassword@mongodb:27017/user_data
+    volumes:
+      - ./user_service:/user_service
+
   auth_service:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_auth_service
     container_name: auth_service
     ports:
       - "7000:7000"
+    volumes:
+      - ./auth_service:/auth_service
 volumes:
   mongodb_data:
