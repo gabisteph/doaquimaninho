@@ -5,7 +5,7 @@ FROM python:3.10
 WORKDIR /user_service
 
 # Copia o arquivo requirements.txt do diretório local para o diretório /user_service no contêiner
-COPY requirements.txt .
+COPY user_service/requirements.txt .
 
 # Instala as dependências listadas no arquivo requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
