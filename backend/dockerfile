@@ -1,17 +1,17 @@
-# 
+# Define a imagem base que será utilizada
 FROM python:3.10
 
-# 
+# Define o diretório de trabalho dentro do contêiner
 WORKDIR /code
 
-# 
-COPY ./requirements.txt /code/requirements.txt
+# Copia o arquivo requirements.txt do diretório local para o diretório /code no contêiner
+COPY requirements.txt .
 
-# 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+# Instala as dependências listadas no arquivo requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-# 
-COPY ./user_service /code/user_service
+# Copia todo o conteúdo da pasta user_service do diretório local para a pasta /code/user_service no contêiner
+COPY user_service ./user_service
 
-# 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Define o comando padrão a ser executado quando o contêiner for iniciado
+CMD ["uvicorn", "user_service.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

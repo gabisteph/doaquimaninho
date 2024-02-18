@@ -13,7 +13,9 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=adminpassword
 
   user_service:
-    build: ./user_service
+    build: 
+      context: .
+      dockerfile: Dockerfile
     container_name: user_service
     ports:
       - "8000:8000"
