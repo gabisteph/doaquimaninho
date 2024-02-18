@@ -4,9 +4,9 @@ from typing import Optional
 class BeneficiaryCreate(BaseModel):
     fullname: str
     email: str
-    document_number: str
+    documentNumber: str
     phone: int
-    beneficiary_type: str  # 'person' or 'institution'
+    beneficiaryType: str  # 'person' or 'institution'
 
 class Address(BaseModel):
     street: str
@@ -18,7 +18,7 @@ class Address(BaseModel):
     complement: Optional[str] = None
 
 class LegalRepresentative(BaseModel):
-    full_name: str
+    fullname: str
     date_of_birth: str
     cpf_cnpj: str
     contact_phone: str
