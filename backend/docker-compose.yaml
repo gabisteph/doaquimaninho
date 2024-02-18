@@ -28,7 +28,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: auth_service
-    portas:
+    ports:
       -"7000:7000"
 volumes:
   mongodb_data:
