@@ -1,14 +1,17 @@
-# Use a imagem base oficial do Python
-FROM python:3.10.12
+# Use a imagem base oficial do Python para o Ubuntu
+FROM python:3.9-slim
 
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /user_service
 
-# Copie o conteúdo do diretório local para o diretório de trabalho no contêiner
-COPY . /user_service
+# Copie os arquivos necessários para o contêiner
+COPY . .
 
 # Instale as dependências do Python
 RUN pip install --no-cache-dir fastapi uvicorn pymongo pydantic
+
+# Exponha a porta necessária
+EXPOSE 8000
 
 # Comando para executar o servidor FastAPI
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
