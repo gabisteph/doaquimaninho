@@ -19,7 +19,7 @@ class BeneficiaryCreate(BaseModel):
     documentNumber: str
     phone: int
     beneficiaryType: str  # 'person' or 'institution'
-    user: User
+    userCreate: UserCreate
 
 class Address(BaseModel):
     street: str
@@ -44,7 +44,7 @@ class DonorCreate(BaseModel):
     documentNumber: str
     phone: str
     restaurant_data: RestaurantData
-    user: User
+    userCreate: UserCreate
 
 # Criando um objeto CryptContext com o esquema bcrypt
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
