@@ -29,6 +29,6 @@ services:
       dockerfile: Dockerfile
     container_name: auth_service
     ports:
-      -"7000:7000"
+      - "7000:7000"
 volumes:
   mongodb_data:
