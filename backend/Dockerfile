@@ -4,7 +4,10 @@ FROM python:3.10
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /user_service
 
-# Copia o arquivo requirements.txt do diretório local para o diretório /code no contêiner
+# Define a variável de ambiente PYTHONPATH
+ENV PYTHONPATH=/user_service
+
+# Copia o arquivo requirements.txt do diretório local para o diretório /user_service no contêiner
 COPY requirements.txt .
 
 # Instala as dependências listadas no arquivo requirements.txt
