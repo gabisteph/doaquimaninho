@@ -1,8 +1,8 @@
 # main.py
 
 from fastapi import FastAPI, HTTPException
-from .database import collection
-from .auth_model import loginCreate
+from database import collection
+from auth_model import loginCreate
 
 app = FastAPI()
 
