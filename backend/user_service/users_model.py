@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 class BeneficiaryCreate(BaseModel):
+    user_type: str = "beneficary"
     fullname: str
     email: str
     documentNumber: str
