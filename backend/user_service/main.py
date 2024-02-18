@@ -9,7 +9,7 @@ app = FastAPI()
 @app.post("/beneficiaries/")
 async def create_beneficiary(beneficiary: BeneficiaryCreate):
     # Check if the beneficiary type is valid
-    if beneficiary.beneficiary_type not in ['person', 'institution']:
+    if beneficiary.beneficiaryType not in ['person', 'institution']:
         raise HTTPException(status_code=400, detail="Invalid beneficiary type. Must be 'person' or 'institution'.")
 
     # Insert the beneficiary into the MongoDB database
