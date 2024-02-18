@@ -1,7 +1,7 @@
 # main.py
 
 from fastapi import FastAPI, HTTPException
-from .database import collection
+from database import collection
 
 app = FastAPI()
 
