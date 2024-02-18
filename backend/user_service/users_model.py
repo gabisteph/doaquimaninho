@@ -8,6 +8,7 @@ class BeneficiaryCreate(BaseModel):
     documentNumber: str
     phone: int
     beneficiaryType: str  # 'person' or 'institution'
+    password: str
 
 class Address(BaseModel):
     street: str
@@ -18,13 +19,6 @@ class Address(BaseModel):
     zip_code: str
     complement: Optional[str] = None
 
-class LegalRepresentative(BaseModel):
-    fullname: str
-    date_of_birth: str
-    cpf_cnpj: str
-    contact_phone: str
-    email: str
-    password: str
 
 class RestaurantData(BaseModel):
     name: str
@@ -32,8 +26,12 @@ class RestaurantData(BaseModel):
     cnpj: str
     delivers: bool
     address: Address
-    legal_representative: LegalRepresentative
 
 class DonorCreate(BaseModel):
     user_type: str = "donor"
+    fullname: str
+    cpf_cnpj: str
+    contact_phone: str
+    email: str
+    password: str
     restaurant_data: RestaurantData
