@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
-from database import collection
-from users_model import BeneficiaryCreate, DonorCreate
+from .database import collection
+from .users_model import BeneficiaryCreate, DonorCreate
 
 # Instance of the FastAPI application
 app = FastAPI()
