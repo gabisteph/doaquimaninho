@@ -30,8 +30,8 @@ class RestaurantData(BaseModel):
 class DonorCreate(BaseModel):
     user_type: str = "donor"
     fullname: str
-    cpf_cnpj: str
-    contact_phone: str
+    documentNumber: str
+    phone: str
     email: str
     password: str
     restaurant_data: RestaurantData
