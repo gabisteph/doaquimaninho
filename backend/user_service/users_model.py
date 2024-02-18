@@ -1,14 +1,25 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Optional
 from typing import Optional
+from passlib.context import CryptContext
+
+
+# Modelo Pydantic para criar usuário
+class UserCreate(BaseModel):
+    email: str
+    password: str
+# Modelo Pydantic para representar usuário armazenado no banco de dados
+class User(BaseModel):
+    email: str
+    hashed_password: str
+
 
 class BeneficiaryCreate(BaseModel):
     user_type: str = "beneficary"
     fullname: str
-    email: str
     documentNumber: str
     phone: int
     beneficiaryType: str  # 'person' or 'institution'
-    password: str
+    user: User
 
 class Address(BaseModel):
     street: str
@@ -32,6 +43,17 @@ class DonorCreate(BaseModel):
     fullname: str
     documentNumber: str
     phone: str
-    email: str
-    password: str
     restaurant_data: RestaurantData
+    user: User
+
+# Criando um objeto CryptContext com o esquema bcrypt
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+
+# Função para criar um usuário com senha criptografada
+def create_user(user_create: UserCreate):
+    # Criptografando a senha usando bcrypt
+    hashed_password = pwd_context.hash(user_create.password)
+    # Retornando o usuário com a senha criptografada
+    return User(email=user_create.email, hashed_password=hashed_password)
+
