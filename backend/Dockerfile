@@ -2,7 +2,7 @@
 FROM python:3.10
 
 # Define o diretório de trabalho dentro do contêiner
-WORKDIR /code
+WORKDIR /user_service
 
 # Copia o arquivo requirements.txt do diretório local para o diretório /code no contêiner
 COPY requirements.txt .
@@ -10,7 +10,7 @@ COPY requirements.txt .
 # Instala as dependências listadas no arquivo requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-# Copia todo o conteúdo da pasta user_service do diretório local para a pasta /code/user_service no contêiner
+# Copia todo o conteúdo da pasta user_service do diretório local para a pasta /user_service no contêiner
 COPY user_service ./user_service
 
 # Define o comando padrão a ser executado quando o contêiner for iniciado
