@@ -32,4 +32,4 @@ ENV PYTHONPATH=/auth_service
 COPY auth_service ./auth_service
 
 # Define o comando padrão a ser executado quando o contêiner for iniciado
-CMD ["uvicorn", "user_service.main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]
+CMD ["uvicorn", "auth_service.main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]
