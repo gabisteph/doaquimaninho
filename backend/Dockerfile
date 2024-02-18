@@ -4,8 +4,10 @@ FROM python:3.10
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /user_service
 
+
 # Define a variável de ambiente PYTHONPATH
 ENV PYTHONPATH=/user_service
+
 
 # Copia o arquivo requirements.txt do diretório local para o diretório /user_service no contêiner
 COPY requirements.txt .
@@ -16,5 +18,18 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # Copia todo o conteúdo da pasta user_service do diretório local para a pasta /user_service no contêiner
 COPY user_service ./user_service
 
+
 # Define o comando padrão a ser executado quando o contêiner for iniciado
 CMD ["uvicorn", "user_service.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /auth_service
+
+# Define a variável de ambiente PYTHONPATH
+ENV PYTHONPATH=/auth_service
+
+# Copia todo o conteúdo da pasta user_service do diretório local para a pasta /user_service no contêiner
+COPY auth_service ./auth_service
+
+# Define o comando padrão a ser executado quando o contêiner for iniciado
+CMD ["uvicorn", "user_service.main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]

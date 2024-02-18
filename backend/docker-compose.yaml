@@ -23,6 +23,12 @@ services:
     #   - mongodb
     # environment:
     #   - MONGO_URI=mongodb://admin:adminpassword@mongodb:27017/user_data
-
+  auth_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: auth_service
+    portas:
+      -"7000:7000"
 volumes:
   mongodb_data:
