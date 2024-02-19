@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from datetime import date
 from fastapi import UploadFile
 
 class ProductCreate(BaseModel):
