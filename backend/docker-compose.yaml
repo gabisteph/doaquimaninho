@@ -42,5 +42,16 @@ services:
     volumes:
       - ./donation_service:/donation_service
 
+  receive_service:
+    build:
+      context: .
+      dockerfile: ./receive_service/Dockerfile_receive_service
+    container_name: receive_service
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./receive_service:/receive_service
+      
+
 volumes:
   mongodb_data:

@@ -3,7 +3,7 @@ from auth_model import User
 
 # Configurações do MongoDB
 MONGO_URI = "mongodb://admin:adminpassword@mongodb:27017/"
-DB_NAME = "user_data"
+DB_NAME = "doaquimaninho"
 COLLECTION_NAME = "users"
 
 def authenticate_user(user: User):
