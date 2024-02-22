@@ -21,7 +21,7 @@ class ShoppingCartResponse(BaseModel):
 
 
 class delivery_status(BaseModel):
-    delivery_status: str # 'delivered', 'canceled' , 'in progress' or 'finished'
+    delivery_status: str # 'delivering', 'canceled' , 'in progress' or 'finished'
 class ShoppingCartDeliveryResponse(BaseModel):
     ShoppingCart = ShoppingCartResponse
     delivery_status = delivery_status

@@ -1,14 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class BeneficiaryCreate(BaseModel):
-    user_type: str = "beneficary"
-    fullname: str
-    email: str
-    documentNumber: str
-    phone: int
-    beneficiaryType: str  # 'person' or 'institution'
-    password: str
+
 
 class Address(BaseModel):
     street: str
@@ -19,6 +12,14 @@ class Address(BaseModel):
     zip_code: str
     complement: Optional[str] = None
 
+class BeneficiaryCreate(BaseModel):
+    user_type: str = "beneficary"
+    fullname: str
+    email: str
+    documentNumber: str
+    phone: str
+    password: str
+    address: Address
 
 class RestaurantData(BaseModel):
     name: str

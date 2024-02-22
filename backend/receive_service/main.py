@@ -3,9 +3,20 @@ from typing import List
 from bson import ObjectId
 from pymongo import MongoClient
 from database import collection, collection_users, collection_products
-from car_model import ShoppingCart, ShoppingCartCreate, ShoppingCartUpdate, ShoppingCartResponse, ShoppingCartDB
+from car_model import ShoppingCart, ShoppingCartCreate, ShoppingCartUpdate, ShoppingCartResponse, ShoppingCartDB, shoppingCartAvailable, ShoppingCartDeliveryResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Operações no banco de dados
 # Aqui verifico se o usuário existe no banco de dados
@@ -100,7 +111,7 @@ async def delete_shopping_cart(cart_id: str):
         raise HTTPException(status_code=404, detail="Cart not found")
 
 # status de entrega
-@app.put("/carts/delivery/{cart_id}", response_model=ShoppingCartDeliveryResponse)
+@app.put("/carts/delivery/{cart_id}")
 async def update_shopping_cart(cart_id: str, cart_data: ShoppingCartUpdate, delivery_status: str = "in progress"):
 
     # Verificar a existência dos produtos atualizados
